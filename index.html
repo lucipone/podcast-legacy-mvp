@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podcast Legacy MVP</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #0ff;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+    }
+    h1, h2 {
+      text-shadow: 0 0 8px #0ff;
+    }
+    .button {
+      background-color: transparent;
+      border: 2px solid #0ff;
+      color: #0ff;
+      padding: 0.75rem 1.5rem;
+      margin-top: 2rem;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .button:hover {
+      background-color: #0ff;
+      color: #000;
+    }
+    .hidden {
+      display: none;
+    }
+    input, select {
+      background: #111;
+      border: 1px solid #0ff;
+      color: #0ff;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      width: 100%;
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="splash" style="background-image: url('images/logo-splash.png')">
+    <h1>Podcast Legacy</h1>
+    <h2>Votre héritage commence ici</h2>
+    <button class="button" onclick="navigateTo('login')">Commencer</button>
+  </div>
+  <div class="container hidden" id="login" style="background-image: url('images/bg_login.png')">
+    <h2>Connexion</h2>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Mot de passe">
+    <button class="button" onclick="navigateTo('signup1')">Créer un compte</button>
+  </div>
+  <div class="container hidden" id="signup1" style="background-image: url('images/bg-signup-main.png')">
+    <h2>Étape 1: Prénom</h2>
+    <input type="text" placeholder="Votre prénom">
+    <button class="button" onclick="navigateTo('signup2')">Suivant</button>
+  </div>
+  <div class="container hidden" id="signup2" style="background-image: url('images/bg-signup-main.png')">
+    <h2>Étape 2: Nom</h2>
+    <input type="text" placeholder="Votre nom">
+    <button class="button" onclick="navigateTo('signup3')">Suivant</button>
+  </div>
+  <div class="container hidden" id="signup3" style="background-image: url('images/bg-signup-main.png')">
+    <h2>Étape 3: Date de naissance</h2>
+    <input type="date">
+    <button class="button" onclick="navigateTo('signup4')">Suivant</button>
+  </div>
+  <div class="container hidden" id="signup4" style="background-image: url('images/bg-signup-main.png')">
+    <h2>Étape 4: Lien familial</h2>
+    <input type="text" placeholder="Ex: père, fille, cousin...">
+    <button class="button" onclick="navigateTo('tree1')">Construire l’arbre</button>
+  </div>
+  <div class="container hidden" id="tree1" style="background-image: url('images/bg-signup-main.png')">
+    <h2>Ajoutez un membre à l’arbre</h2>
+    <input type="text" placeholder="Nom du membre">
+    <select>
+      <option>Parent</option>
+      <option>Enfant</option>
+      <option>Frère/Sœur</option>
+      <option>Autre</option>
+    </select>
+    <button class="button" onclick="navigateTo('tree2')">Ajouter & Continuer</button>
+  </div>
+  <div class="container hidden" id="tree2" style="background-image: url('images/bg-signup-main.png')">
+    <h2>Arbre familial</h2>
+    <p>(Visualisation simplifiée ici)</p>
+    <button class="button" onclick="navigateTo('record1')">Passer à l’enregistrement</button>
+  </div>
+  <div class="container hidden" id="record1" style="background-image: url('images/bg-signup-main.png')">
+    <h2>Enregistrement</h2>
+    <p>Appuyez pour commencer à parler</p>
+    <button class="button" onclick="navigateTo('record2')">🎙️ Démarrer</button>
+  </div>
+  <div class="container hidden" id="record2" style="background-image: url('images/bg-signup-main.png')">
+    <h2>Merci pour votre message</h2>
+    <p>Votre voix est enregistrée.</p>
+    <button class="button" onclick="navigateTo('splash')">Revenir à l’accueil</button>
+  </div>
+  <script>
+    function navigateTo(sectionId) {
+      const sections = document.querySelectorAll('.container');
+      sections.forEach(section => section.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
